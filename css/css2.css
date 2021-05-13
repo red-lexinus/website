@@ -1,0 +1,46 @@
+.profile_card_board{
+    min-width: 60%;
+    background-color: rgb(255, 249, 163);
+    border-radius: 20px;
+    border-color: blue;
+}
+
+
+.profile_card_body{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_row_block{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.profile_col_block{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.profile_img img{
+    max-height: 250px;
+}
+
+.main{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.poet_poem{
+    background-color: rgb(38, 212, 255);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

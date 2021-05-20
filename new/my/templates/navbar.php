@@ -1,6 +1,12 @@
+<?php
+if (isset($_POST['signout'])) {
+    setcookie('user', '', time() - 3600, '/');
+    header('Location: /new/my/');
+}
+?>
 <div class="header">
     <div class="box">
-        <a href="main.html"><img src="img\logo.png" title="на главную страницу" alt=""/></a>
+        <a href="index.php"><img src="img\logo.png" title="на главную страницу" alt=""/></a>
         <h1>Стихи оживляют душу</h1>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -13,9 +19,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <div class="row_block" id='a_header'>
-                        <a class="a_header" href="poets.html">Поэты</a>
-                        <a class="a_header" href="poems.html">Стихи</a>
-                        <a class="a_header" href="about_progect.html">О проекте</a>
+                        <a class="a_header" href="poets.php">Поэты</a>
+                        <a class="a_header" href="poems.php">Стихи</a>
+                        <a class="a_header" href="index.php">О проекте</a>
+                        <?php
+                        if ($_COOKIE['user'] == 'admin'):?>
+                            <a class="a_header" href="admin.php" tabindex="-1">Админ панель</a>
+                        <?php endif; ?>
                         <?php
                         if ($_COOKIE['user'] == ''):?>
                             <a class="a_header" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#signmod">Войти</a>
@@ -61,7 +71,9 @@
             </div>
             <div class="modal-footer">
 
-                <button type="button" class="btn btn-light" style="background: #4ce3cc" data-bs-dismiss="modal">Закрыть</button>
+                <button type="button" class="btn btn-light" style="background: #4ce3cc" data-bs-dismiss="modal">
+                    Закрыть
+                </button>
                 <button type="submit" name="do_login" class="btn" style="background: #4ce3cc">Войти</button>
             </div>
             </form>
@@ -95,7 +107,9 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal" style="background: #4ce3cc">Закрыть</button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal" style="background: #4ce3cc">
+                    Закрыть
+                </button>
                 <button type="submit" name="do_reg" class="btn" style="background: #4ce3cc">Зарегестрироваться</button>
             </div>
             </form>

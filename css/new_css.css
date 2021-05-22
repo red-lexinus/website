@@ -2,9 +2,9 @@
   max-height: 100px;
 }
 
-.header h1 {
+.header h3 {
   color: rgb(247, 82, 33);
-  text-shadow: 3px 3px 0px rgba(255, 2, 2, 0.2), 2px 2px 0px rgba(255, 2, 2, 0.2);
+  text-shadow: 2px 2px 0px rgba(255, 2, 2, 0.2), 1px 1px 0px rgba(255, 2, 2, 0.2);
 }
 .header {
   margin-left: 5%;
@@ -40,6 +40,14 @@ body {
 
 .poet{
   margin-bottom: 1%;
+}
+
+.poet.hide{
+  display: none;
+}
+
+option.hide{
+  display: none;
 }
 
 .main{

@@ -15,8 +15,7 @@
 <?php include('templates/navbar.php') ?>
 <div class="search">
     <form class="d-flex" method="post">
-        <input class="form-control me-2" type="search" placeholder="Поиск поэта" aria-label="Поиск поэта" id='name' name="name">
-        <button class="btn btn-outline-success" name='search' id='search' type="submit">Поиск</button>
+        <input class="form-control me-2" type="search" placeholder="Поиск стиха" aria-label="Поиск стиха" id='search' name="name">
     </form>
 </div>
 <div class="poets">
@@ -43,7 +42,13 @@
                 <div class="card-body">
                     <img src='img/poets/0.png'>
                     <p class="card-text"><?php echo $name ?></p>
-                    <a href="poem.php?id=<?php echo $poem_id ?>&search=" class="btn btn-primary">Перейти к стиху</a>
+                    <div>
+                        <?php if ($_COOKIE['user'] == '1'): ?>
+                            <a href="fun/del_poem.php?id=<?php echo $poem_id ?>&search=" class="btn btn-primary">Удалить
+                                стих</a>
+                        <?php endif; ?>
+                        <a href="poem.php?id=<?php echo $poem_id ?>&search=" class="btn btn-primary">Перейти к стиху</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,6 +58,24 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
+</script>
+<script>
+    document.querySelector('#search').oninput = function () {
+        let need_poet = this.value.trim();
+        let poets = document.querySelectorAll('.poet')
+        for (let i = 0; i < poets.length; ++i) {
+            let poet = poets[i]
+            let card = poet.querySelector('.card')
+            let cord_body = card.querySelector('.card-body')
+            let  p = cord_body.querySelector('p').innerText
+            if (need_poet != '' && p.search(need_poet) == -1){
+                poet.classList.add('hide')
+            }
+            else {
+                poet.classList.remove('hide')
+            }
+        }
+    }
 </script>
 </body>
 </html>

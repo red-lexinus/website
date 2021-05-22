@@ -31,18 +31,6 @@ if (isset($_GET['search'])) {
     $author = $mysqli->query("SELECT * FROM author WHERE author.author_id=$author_id");
     $author = $author->fetch_assoc();
     $author_name = $author['full_name'];
-
-//    $row = $authors->fetch_assoc();
-//    $name_1 = $row['name'];
-//    $second_name = $row['second_name'];
-//    $last_name = $row['last_name'];
-//    $photo_id = $row['photo_id'];
-//    $data_1 = $row['first_date'];
-//    $info = $row['info'];
-//    $data_2 = $row['second_date'];
-//    $full_name = $name_1 . " " . $second_name . " " . $last_name;
-//    $full_data = "Жил с " . $data_1 . " по " . $data_2;
-//    $poems = $mysqli->query("SELECT * FROM poems WHERE poems.author_id=$author_id");
 }
 ?>
 

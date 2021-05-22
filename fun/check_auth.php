@@ -13,12 +13,12 @@ $user = $res->fetch_assoc();
 
 
 if (count($user) == 0) {
-    echo "Юзер не найден";
+    header('Location: /new/my/error.php?name=такого+пользователя+не+найдено');
     exit();
 }
 
 
-setcookie('user', $login, time() + 3600 * 24 * 7, '/');
+setcookie('user', $user['root'], time() + 3600 * 24 * 7, '/');
 header('Location: /new/my/');
 $mysqli->close();
 ?>

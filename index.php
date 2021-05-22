@@ -25,24 +25,18 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="img/1.png" class="d-block w-100" alt="...">
+                <img src="img/2.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Загаловок слайда</h5>
-                    <p>Текст поясняющий слайд</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/1.png" class="d-block w-100" alt="...">
+                <img src="img/3.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Загаловок слайда</h5>
-                    <p>Текст поясняющий слайд</p>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="img/1.png" class="d-block w-100" alt="...">
+                <img src="img/4.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>Загаловок слайда</h5>
-                    <p>Текст поясняющий слайд</p>
                 </div>
             </div>
         </div>

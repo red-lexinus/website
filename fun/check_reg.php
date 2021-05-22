@@ -9,15 +9,15 @@ $nameuser = filter_var(trim($_POST['namereg']), FILTER_SANITIZE_STRING);
 $pass = filter_var(trim($_POST['passreg']), FILTER_SANITIZE_STRING);
 
 if (mb_strlen($login) < 1 || mb_strlen($login) > 90) {
-    echo "Uncorrect login length";
+    header('Location: /new/my/error.php');
     exit();
 }
 if (mb_strlen($nameuser) < 1 || mb_strlen($nameuser) > 40) {
-    echo "Uncorrect name length";
+    header('Location: /new/my/error.php');
     exit();
 }
 if (mb_strlen($pass) < 1 || mb_strlen($pass) > 40) {
-    echo "Uncorrect password length";
+    header('Location: /new/my/error.php');
     exit();
 }
 
@@ -27,14 +27,18 @@ $mysqli = new mysqli($host, $user, $password, $name);
 $res = $mysqli->query("SELECT * FROM users WHERE login='$login' AND password='$pass'");
 
 $user = $res->fetch_assoc();
-if (count($user) != 0){
-    echo "Данный логин уже используется";
+if (count($user) != 0) {
+    header('Location: /new/my/error.php');
+    $mysqli->close();
     exit();
 
 }
-$mysqli->query("INSERT INTO `users` (`id`, `name`, `login`, `password`) VALUES (NULL, '$nameuser', '$login', '$pass');");
+$mysqli->query("INSERT INTO `users` (`id`, `name`, `login`, `password`) VALUES (NULL, '$nameuser', '$login', '$pass')");
+$res = $mysqli->query("SELECT * FROM users WHERE login='$login' AND password='$pass'");
 
-setcookie('user', $login, time() + 3600 * 24 * 7, '/');
+$user = $res->fetch_assoc();
+
+setcookie('user', $user['root'], time() + 3600 * 24 * 7, '/');
 
 header('Location: /new/my/');
 

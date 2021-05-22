@@ -7,7 +7,7 @@ if (isset($_POST['signout'])) {
 <div class="header">
     <div class="box">
         <a href="index.php"><img src="img\logo.png" title="на главную страницу" alt=""/></a>
-        <h1>Стихи оживляют душу</h1>
+        <h3>Стихи оживляют душу</h3>
     </div>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
@@ -23,13 +23,13 @@ if (isset($_POST['signout'])) {
                         <a class="a_header" href="poems.php">Стихи</a>
                         <a class="a_header" href="index.php">О проекте</a>
                         <?php
-                        if ($_COOKIE['user'] == 'admin'):?>
+                        if ($_COOKIE['user'] == '1'):?>
                             <a class="a_header" href="admin.php" tabindex="-1">Админ панель</a>
                         <?php endif; ?>
                         <?php
                         if ($_COOKIE['user'] == ''):?>
                             <a class="a_header" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#signmod">Войти</a>
-                            <a class="a_header" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#regmod">Зарегестрироваться</a>
+                            <a class="a_header" href="#" tabindex="-1" data-bs-toggle="modal" data-bs-target="#regmod">Зарегистрироваться</a>
                         <?php endif; ?>
                         <?php
                         if (!($_COOKIE['user'] == '')):?>
@@ -58,7 +58,7 @@ if (isset($_POST['signout'])) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
             </div>
             <div class="modal-body">
-                <form action="check_fun/check_auth.php" method="post">
+                <form action="fun/check_auth.php" method="post">
                     <div class="mb-3">
                         <label for="logauth" class="form-label">Login</label>
                         <input type="text" class="form-control" id="logauth" name="logauth" placeholder="Login">
@@ -85,12 +85,12 @@ if (isset($_POST['signout'])) {
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modlb">Регестрация</h5>
+                <h5 class="modal-title" id="modlb">Регистрация</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <!--      <form action="checks/check_reg.php" method="post">-->
-                <form action="check_fun/check_reg.php" method="post">
+                <form action="fun/check_reg.php" method="post">
                     <div class="mb-3">
                         <label for="namereg" class="form-label">Name</label>
                         <input type="text" class="form-control" id="namereg" name="namereg" placeholder="Имя">
@@ -110,7 +110,7 @@ if (isset($_POST['signout'])) {
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal" style="background: #4ce3cc">
                     Закрыть
                 </button>
-                <button type="submit" name="do_reg" class="btn" style="background: #4ce3cc">Зарегестрироваться</button>
+                <button type="submit" name="do_reg" class="btn" style="background: #4ce3cc">Зарегистрироваться</button>
             </div>
             </form>
         </div>

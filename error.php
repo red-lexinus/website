@@ -17,9 +17,9 @@
 <div class="poets">
     <div class="poet">
         <div class="card" style="background-color:  #b9dfe9; border-radius: 20px;">
-            <div class="card-body">
-                <h3 style="white-space:pre-wrap;justify-content: center;color: rgb(239,18,18);">
-                    Произошла ошибка, пожалуйста удостоверьтесь, что введённые данные корректны
+            <div class="body">
+                <h3 style="color: rgb(239,18,18);">
+                    Произошла ошибка, пожалуйста удостоверьтесь,<br> что введённые данные корректны
                 </h3>
             </div>
         </div>

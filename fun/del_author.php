@@ -10,5 +10,5 @@ if (isset($_GET['search'])) {
     $mysqli->query("DELETE FROM poems WHERE author_id = '$author_id'");
     $mysqli->close();
 }
-header('Location: /new/my/poets.php');
+header('Location: /website/poets.php');
 ?>

@@ -9,7 +9,7 @@ $poem_txt = filter_var(trim($_POST['poem_txt']), FILTER_SANITIZE_STRING);
 
 
 if ($poem_txt == '') {
-    header('Location: /new/my/error.php');
+    header('Location: /website/error.php');
     exit();
 }
 
@@ -17,6 +17,6 @@ if ($poem_txt == '') {
 $mysqli = new mysqli($host, $user, $password, $name);
 $mysqli->query("INSERT INTO `poems` (`poem_id`, `author_id`, `name`, `txt`) VALUES (NULL, '$author_id', '$poem_name', '$poem_txt');");
 
-header('Location: /new/my/admin.php');
+header('Location: /website/admin.php');
 $mysqli->close();
 ?>

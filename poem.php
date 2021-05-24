@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"/>
     <link rel="stylesheet" href="css/new_css.css">
-    <link href="css\css2.css" rel="stylesheet"/>
+    <link href="css/css2.css" rel="stylesheet"/>
+    <link href="css/poem.css" rel="stylesheet"/>
 
 </head>
 <body>
@@ -31,6 +32,23 @@ if (isset($_GET['search'])) {
     $author = $mysqli->query("SELECT * FROM author WHERE author.author_id=$author_id");
     $author = $author->fetch_assoc();
     $author_name = $author['full_name'];
+    $liking = False;
+    $count_like = $mysqli->query("SELECT * FROM favorite_poems WHERE poem_id=$poem_id");
+    $count_like = $count_like->fetch_assoc();
+    $count_like = (count($count_like)) / 3;
+    if ($_COOKIE['user'] != '') {
+        $user_id = $_COOKIE['id'] + 0;
+        $likes_poems = $mysqli->query("SELECT * FROM favorite_poems WHERE poem_id=$poem_id && user_id = $user_id");
+        $likes_poems = $likes_poems->fetch_assoc();
+        if (count($likes_poems) == 0){
+            $liking = False;
+        }
+        else{
+            $liking = True;
+        }
+
+    }
+
 }
 ?>
 
@@ -56,6 +74,30 @@ if ($running):?>
                 <div class="card-body">
                     <h3 style="white-space:pre-wrap;justify-content: center;color: rgb(0, 47, 255);"><?php echo $poem['txt'] ?>
                     </h3>
+                    <div class="like_block">
+                        <?php if ($liking): ?>
+                            <a href="fun/change_like.php?id=<?php echo $poem_id ?>&search=">
+                                <img src="img/like_1.png" alt=""></img>
+                            </a>
+                            <div class="card-body">
+                                <h5 class="like_txt"><?php echo $count_like ?></h5>
+                            </div>
+                        <?php endif; ?>
+                        <?php if (!$liking): ?>
+                            <a href="fun/change_like.php?id=<?php echo $poem_id ?>&search=">
+                                <img src="img/like_2.png" alt=""></img>
+                            </a>
+                            <div class="card-body">
+                                <h5 class="not_like_txt"><?php echo $count_like ?></h5>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <!--                    <div class="like_block">-->
+                    <!--                        <a href="#">-->
+                    <!--                            <img src="img/like_1.png" alt=""></img>-->
+                    <!--                        </a>-->
+                    <!--                        <h1 class="like_txt">likes</h1>-->
+                    <!--                    </div>-->
                 </div>
             </div>
         </div>

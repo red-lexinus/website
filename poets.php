@@ -14,7 +14,7 @@
 <body>
 <?php include('templates/navbar.php') ?>
 <div class="search">
-    <form class="d-flex" method="get">
+    <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Поиск поэта" aria-label="Поиск поэта"
                id='search'
                name="name">

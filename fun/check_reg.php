@@ -9,15 +9,15 @@ $nameuser = filter_var(trim($_POST['namereg']), FILTER_SANITIZE_STRING);
 $pass = filter_var(trim($_POST['passreg']), FILTER_SANITIZE_STRING);
 
 if (mb_strlen($login) < 1 || mb_strlen($login) > 90) {
-    header('Location: /new/my/error.php');
+    header('Location: /website/error.php');
     exit();
 }
 if (mb_strlen($nameuser) < 1 || mb_strlen($nameuser) > 40) {
-    header('Location: /new/my/error.php');
+    header('Location: /website/error.php');
     exit();
 }
 if (mb_strlen($pass) < 1 || mb_strlen($pass) > 40) {
-    header('Location: /new/my/error.php');
+    header('Location: /website/error.php');
     exit();
 }
 
@@ -28,7 +28,7 @@ $res = $mysqli->query("SELECT * FROM users WHERE login='$login' AND password='$p
 
 $user = $res->fetch_assoc();
 if (count($user) != 0) {
-    header('Location: /new/my/error.php');
+    header('Location: /website/error.php');
     $mysqli->close();
     exit();
 
@@ -38,9 +38,10 @@ $res = $mysqli->query("SELECT * FROM users WHERE login='$login' AND password='$p
 
 $user = $res->fetch_assoc();
 
+setcookie('id', $user['id'], time() + 3600 * 24 * 7, '/');
 setcookie('user', $user['root'], time() + 3600 * 24 * 7, '/');
 
-header('Location: /new/my/');
+header('Location: /website/');
 
 $mysqli->close();
 ?>

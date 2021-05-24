@@ -1,7 +1,8 @@
 <?php
 if (isset($_POST['signout'])) {
+    setcookie('id', '', time() - 3600, '/');
     setcookie('user', '', time() - 3600, '/');
-    header('Location: /new/my/');
+    header('Location: /website/');
 }
 ?>
 <div class="header">

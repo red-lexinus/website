@@ -9,5 +9,5 @@ if (isset($_GET['search'])) {
     $mysqli->query("DELETE FROM poems WHERE poem_id = '$poem'");
     $mysqli->close();
 }
-header('Location: /new/my/poems.php');
+header('Location: /website/poems.php');
 ?>
